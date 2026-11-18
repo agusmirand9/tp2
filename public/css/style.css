@@ -1,4 +1,3 @@
-/* Fuente: Montserrat variable, guardada en local (un archivo, todos los pesos). */
 @font-face {
     font-family: "Montserrat";
     src: url("../fonts/Montserrat-Variable.ttf") format("truetype");
@@ -18,7 +17,6 @@
 
     --space-section: 4rem;
 
-    /* Variables de Bootstrap que sobrescribimos. */
     --bs-font-sans-serif: "Montserrat", system-ui, sans-serif;
     --bs-body-bg: var(--color-bg);
     --bs-body-color: var(--color-text);
@@ -29,7 +27,6 @@
     --bs-danger-rgb: 165, 40, 52;
 }
 
-/* Tipografía */
 h1,
 h2,
 h3 {
@@ -66,7 +63,6 @@ button:focus-visible {
     outline-offset: 3px;
 }
 
-/* Estructura general */
 #app {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -86,7 +82,7 @@ main section {
 main p {
     max-width: 65ch;
 }
-/* Páginas con formulario: todo el contenido en una columna angosta y centrada */
+
 main:has(> form) > * {
     max-width: 32rem;
     margin-inline: auto;
@@ -96,7 +92,7 @@ main form .btn-primary {
     width: 100%;
 }
 
-/* Menú */
+
 .navbar {
     --bs-navbar-padding-y: 1.25rem;
     --bs-navbar-color: var(--color-text);
@@ -118,7 +114,7 @@ main form .btn-primary {
     text-underline-offset: 0.4em;
 }
 
-/* Footer */
+
 .footer {
     display: flex;
     justify-content: center;
@@ -132,7 +128,7 @@ main form .btn-primary {
     margin-bottom: 0;
 }
 
-/* Cards */
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
@@ -186,7 +182,6 @@ main form .btn-primary {
     border-radius: 0.75rem;
 }
 
-/* Botones */
 .btn {
     padding: 0.5rem 1.5rem;
     border-radius: 999px;
@@ -206,7 +201,6 @@ main form .btn-primary {
     --bs-btn-focus-shadow-rgb: 47, 74, 47;
 }
 
-/* Formularios: campos con una sola línea abajo */
 .form-label {
     font-weight: 500;
 }
@@ -233,7 +227,6 @@ main form .btn-primary {
     color: var(--color-text-muted);
 }
 
-/* Tablas y avisos */
 .table {
     --bs-table-bg: transparent;
     --bs-table-border-color: var(--color-border);
@@ -270,7 +263,6 @@ main form .btn-primary {
     padding-block: 2rem;
 }
 
-/* Blog: listado */
 .post-card img {
     aspect-ratio: 4 / 3;
 }
@@ -308,7 +300,6 @@ main form .btn-primary {
     }
 }
 
-/* Blog: entrada */
 .post {
     max-width: 46rem;
     margin-inline: auto;
@@ -341,9 +332,7 @@ main form .btn-primary {
     line-height: 1.8;
 }
 
-/* Links de acción */
 
-/* ver detalle, ver todas: avanzan con una flecha que se mueve */
 .link-more {
     display: inline-flex;
     align-items: center;
@@ -360,7 +349,6 @@ main form .btn-primary {
     border-bottom-color: currentColor;
 }
 
-/* volver: discretos, la flecha va hacia atrás */
 .link-back {
     display: inline-flex;
     align-items: center;
@@ -387,7 +375,6 @@ main form .btn-primary {
     transform: translateX(-4px);
 }
 
-/* acciones de las tablas del admin: se usan junto a "btn btn-sm" */
 .btn-action {
     --bs-btn-color: var(--color-primary);
     --bs-btn-border-color: var(--color-primary);
@@ -411,7 +398,7 @@ main form .btn-primary {
     --bs-btn-active-border-color: rgb(var(--bs-danger-rgb));
 }
 
-/* si el usuario pidió menos movimiento, no animamos las flechas */
+
 @media (prefers-reduced-motion: reduce) {
     .link-more i,
     .link-back i {
@@ -419,7 +406,6 @@ main form .btn-primary {
     }
 }
 
-/* imagen de portada suelta (detalle de cabalgata, vista previa en el admin) */
 .img-cover {
     width: 100%;
     max-width: 28rem;
@@ -432,7 +418,6 @@ main form .btn-primary {
     max-width: 20rem;
 }
 
-/* Banda invertida: mismos colores, al revés */
 .band {
     padding: 1.5rem 1.25rem;
     background-color: var(--color-band);
@@ -469,7 +454,7 @@ main form .btn-primary {
     margin-bottom: 0;
 }
 
-/* Card de precio: se usa junto a card-item */
+
 .price-card {
     display: flex;
     flex-direction: column;
@@ -511,13 +496,11 @@ main form .btn-primary {
     color: var(--color-primary);
 }
 
-/* el link queda siempre abajo, aunque las cards tengan distinto alto */
 .price-card .link-more {
     margin-top: auto;
     align-self: flex-start;
 }
 
-/* Vistas de detalle en dos columnas */
 .detail-layout {
     display: grid;
     gap: 2rem;
@@ -541,9 +524,7 @@ main form .btn-primary {
 }
 
 
-/* Tablas del admin: en celular cada fila se apila como una tarjeta */
 @media (max-width: 47.99rem) {
-    /* el encabezado se oculta a la vista pero queda para lectores de pantalla */
     .table-stack thead {
         position: absolute;
         width: 1px;
@@ -578,7 +559,6 @@ main form .btn-primary {
         font-size: 1.125rem;
     }
 
-    /* cada dato muestra su nombre de columna, tomado de data-label */
     .table-stack td[data-label]::before {
         content: attr(data-label) ": ";
         font-weight: 600;
