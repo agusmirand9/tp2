@@ -7,7 +7,7 @@
         <p>Todavía no hay usuarios registrados.</p>
     @else
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-stack">
                 <caption>Usuarios registrados</caption>
                 <thead>
                     <tr>
@@ -22,10 +22,10 @@
                     @foreach($users as $user)
                         <tr>
                             <th scope="row">{{ $user->name }}</th>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role->label }}</td>
-                            <td>{{ $user->bookings_count }}</td>
-                            <td>
+                            <td data-label="Email">{{ $user->email }}</td>
+                            <td data-label="Rol">{{ $user->role->label }}</td>
+                            <td data-label="Contrataciones">{{ $user->bookings_count }}</td>
+                            <td data-label="Acciones">
                                <a href="{{ route('admin.users.show', ['user' => $user]) }}" class="btn btn-sm btn-outline-secondary btn-action">
                                     <i class="bi bi-eye me-1" aria-hidden="true"></i>Ver detalle<span class="visually-hidden"> de {{ $user->name }}</span>
                                 </a>

@@ -12,7 +12,7 @@
         <p>Todavía no hay novedades cargadas.</p>
     @else
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-stack">
                 <caption>Novedades del blog</caption>
                 <thead>
                     <tr>
@@ -27,19 +27,19 @@
                     @foreach($posts as $post)
                         <tr>
                             <th scope="row">{{ $post->title }}</th>
-                            <td>{{ $post->author->name }}</td>
-                            <td>
+                            <td data-label="Autor">{{ $post->author->name }}</td>
+                            <td data-label="Publicación">
                                 <time datetime="{{ $post->published_at->toDateString() }}">{{ $post->published_at->format('d/m/Y') }}</time>
                             </td>
-                            <td>
+                            <td data-label="Estado">
                                 @if($post->published_at->isFuture())
                                     <i class="bi bi-clock-history me-1" aria-hidden="true"></i>Programada
                                 @else
                                     <i class="bi bi-check-circle-fill me-1" aria-hidden="true"></i>Publicada
                                 @endif
                             </td>
-                            <td>
-                                <div class="d-flex align-items-center gap-2">
+                            <td data-label="Acciones">
+                                <div class="d-flex align-items-center gap-2 flex-wrap">
                                     <a href="{{ route('admin.posts.edit', ['post' => $post]) }}" class="btn btn-sm btn-outline-secondary btn-action">
                                         <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>Editar<span class="visually-hidden"> {{ $post->title }}</span>
                                     </a>

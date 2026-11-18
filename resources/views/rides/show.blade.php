@@ -19,15 +19,19 @@
         </div>
         <div class="band">
             <h2>Datos de la salida</h2>
-            <dl class="band-grid list-unstyled">
-                <dt><i class="bi bi-clock" aria-hidden="true"></i> Duración</dt>
-                <dd>{{ $ride->duration_label }}</dd>
-
-                <dt><i class="bi bi-speedometer2" aria-hidden="true"></i> Dificultad</dt>
-                <dd>{{ $ride->difficulty }}</dd>
-
-                <dt><i class="bi bi-cash-coin " aria-hidden="true"></i> Precio por persona</dt>
-                <dd>${{ number_format($ride->price, 0, ',', '.') }}</dd>
+            <dl class="band-grid">
+                <div>
+                    <dt><i class="bi bi-clock" aria-hidden="true"></i> Duración</dt>
+                    <dd>{{ $ride->duration_label }}</dd>
+                </div>  
+                <div>  
+                    <dt><i class="bi bi-speedometer2" aria-hidden="true"></i> Dificultad</dt>
+                    <dd>{{ $ride->difficulty }}</dd>
+                </div>
+                <div>
+                    <dt><i class="bi bi-cash-coin " aria-hidden="true"></i> Precio por persona</dt>
+                    <dd>${{ number_format($ride->price, 0, ',', '.') }}</dd>
+                </div>
             </dl>
         </div>
     </article>

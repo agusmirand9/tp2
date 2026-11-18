@@ -39,10 +39,12 @@ h3 {
 
 h1 {
     margin-bottom: 1rem;
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 h2 {
@@ -69,6 +71,7 @@ button:focus-visible {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 main.container {
@@ -349,6 +352,7 @@ main form .btn-primary {
     color: var(--color-primary);
     text-decoration: none;
     border-bottom: 1px solid transparent;
+    min-height: 2.75rem
 }
 
 .link-more:hover {
@@ -363,6 +367,7 @@ main form .btn-primary {
     gap: 0.4rem;
     color: var(--color-text-muted);
     text-decoration: none;
+    min-height: 2.75rem
 }
 
 .link-back:hover {
@@ -392,6 +397,7 @@ main form .btn-primary {
     --bs-btn-active-color: var(--color-bg);
     --bs-btn-active-bg: var(--color-text);
     --bs-btn-active-border-color: var(--color-text);
+    --bs-btn-padding-:0.5rem;
 }
 
 .btn-action--danger {
@@ -428,11 +434,17 @@ main form .btn-primary {
 
 /* Banda invertida: mismos colores, al revés */
 .band {
-    padding: 2.5rem 2rem;
+    padding: 1.5rem 1.25rem;
     background-color: var(--color-band);
     color: var(--color-bg);
     border-radius: 1rem;
 }
+
+@media (min-width: 48rem) {
+    .band {
+        padding: 2.5rem 2rem;
+    }
+}    
 
 .band h1,
 .band h2,
@@ -450,6 +462,10 @@ main form .btn-primary {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: 1.5rem;
     padding: 0;
+    margin-bottom: 0;
+}
+
+.band-grid dd {
     margin-bottom: 0;
 }
 
@@ -524,3 +540,55 @@ main form .btn-primary {
     }
 }
 
+
+/* Tablas del admin: en celular cada fila se apila como una tarjeta */
+@media (max-width: 47.99rem) {
+    /* el encabezado se oculta a la vista pero queda para lectores de pantalla */
+    .table-stack thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    .table-stack,
+    .table-stack tbody,
+    .table-stack tr,
+    .table-stack th,
+    .table-stack td {
+        display: block;
+    }
+
+    .table-stack tr {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .table-stack th,
+    .table-stack td {
+        padding: 0.25rem 0;
+        border: 0;
+        box-shadow: none;
+        overflow-wrap: break-word;
+    }
+
+    .table-stack th[scope="row"] {
+        font-size: 1.125rem;
+    }
+
+    /* cada dato muestra su nombre de columna, tomado de data-label */
+    .table-stack td[data-label]::before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+    }
+
+    .table-stack td[data-label="Acciones"] {
+        padding-top: 0.75rem;
+    }
+
+    .table-stack td[data-label="Acciones"]::before {
+        content: none;
+    }
+}
