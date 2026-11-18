@@ -10,26 +10,32 @@
         <ul class="card-grid list-unstyled">
             @foreach($rides as $ride)
                 <li>
-                    <article class="card-item">
+                    <article class="card-item price-card">
                         @if($ride->cover != null && \Storage::exists($ride->cover))
                             <img
                                 src="{{ \Storage::url($ride->cover) }}"
                                 alt="{{ $ride->cover_description }}"
-                                class="img-fluid mb-2"
+                                class="img-fluid mb-3"
                             >
                         @endif
+
+                        <p class="price">
+                            ${{ number_format($ride->price, 0, ',', '.') }}<small> por persona</small>
+                        </p>
 
                         <h2>
                             <a href="{{ route('rides.show', ['ride' => $ride]) }}">{{ $ride->name }}</a>
                         </h2>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-clock me-1" aria-hidden="true"></i>Duración: {{ $ride->duration_label }}</li>
-                            <li><i class="bi bi-speedometer2 me-1" aria-hidden="true"></i>Dificultad: {{ $ride->difficulty }}</li>
-                            <li><i class="bi bi-cash-coin me-1" aria-hidden="true"></i>Precio por persona: ${{ number_format($ride->price, 0, ',', '.') }}</li>
+
+                        <ul class="price-card-features">
+                            <li><i class="bi bi-check-lg" aria-hidden="true"></i>Duración: {{ $ride->duration_label }}</li>
+                            <li><i class="bi bi-check-lg" aria-hidden="true"></i>Dificultad: {{ $ride->difficulty }}</li>
+                            <li><i class="bi bi-check-lg" aria-hidden="true"></i>Guía durante todo el recorrido</li>
                         </ul>
-                            <a href="{{ route('rides.show', ['ride' => $ride]) }}" class="link-more">
-                                Ver detalle<span class="visually-hidden"> de {{ $ride->name }}</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
-                            </a>
+
+                        <a href="{{ route('rides.show', ['ride' => $ride]) }}" class="link-more">
+                            Ver detalle<span class="visually-hidden"> de {{ $ride->name }}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                        </a>
                     </article>
                 </li>
             @endforeach

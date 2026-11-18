@@ -17,18 +17,19 @@
         <div>
             {!! nl2br(e($ride->description)) !!}
         </div>
+        <div class="band">
+            <h2>Datos de la salida</h2>
+            <dl class="band-grid list-unstyled">
+                <dt><i class="bi bi-clock" aria-hidden="true"></i> Duración</dt>
+                <dd>{{ $ride->duration_label }}</dd>
 
-        <h2>Datos de la salida</h2>
-        <dl>
-            <dt><i class="bi bi-clock me-1" aria-hidden="true"></i>Duración</dt>
-            <dd>{{ $ride->duration_label }}</dd>
+                <dt><i class="bi bi-speedometer2" aria-hidden="true"></i> Dificultad</dt>
+                <dd>{{ $ride->difficulty }}</dd>
 
-            <dt><i class="bi bi-speedometer2 me-1" aria-hidden="true"></i>Dificultad</dt>
-            <dd>{{ $ride->difficulty }}</dd>
-
-            <dt><i class="bi bi-cash-coin me-1" aria-hidden="true"></i>Precio por persona</dt>
-            <dd>${{ number_format($ride->price, 0, ',', '.') }}</dd>
-        </dl>
+                <dt><i class="bi bi-cash-coin " aria-hidden="true"></i> Precio por persona</dt>
+                <dd>${{ number_format($ride->price, 0, ',', '.') }}</dd>
+            </dl>
+        </div>
     </article>
 
     <p class="mt-4">
