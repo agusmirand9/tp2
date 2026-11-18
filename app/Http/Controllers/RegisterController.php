@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 /**
  * maneja el registro de nuevos usuarios
  */
-
 class RegisterController extends Controller
 {
     /**
@@ -29,7 +28,6 @@ class RegisterController extends Controller
      * @param  Request  $request
      * @return RedirectResponse
      */
-
     public function process(Request $request): RedirectResponse
     {
         $request->validate([
@@ -59,7 +57,7 @@ class RegisterController extends Controller
 
         return redirect()
             ->route('home')
-            ->with('feedback.message', 'Cuenta creada con exito.');
+            ->with('feedback.message', 'Cuenta creada con éxito.');
 
     }
 }

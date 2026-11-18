@@ -75,7 +75,7 @@
                                     <form action="{{ route('auth.logout') }}" method="post">
                                         @csrf
                                         <button type="submit" class="nav-link">
-                                            <i class="bi bi-box-arrow-right me-1" aria-hidden="true"></i>
+                                            <i class="bi bi-box-arrow-right me-1" aria-hidden="true"></i>Cerrar sesión
                                         </button>
                                     </form>
                                 </li>

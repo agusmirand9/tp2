@@ -6,11 +6,11 @@
             <h1>{{ $ride->name }}</h1>
         </header>
 
-        @if($ride->cover)
+        @if($ride->cover != null && \Storage::exists($ride->cover))
             <img
-                src="{{ asset('storage/' . $ride->cover) }}"
+                src="{{ \Storage::url($ride->cover) }}"
                 alt="{{ $ride->cover_description }}"
-                class="img-fluid mb-3"
+                class="img-cover mb-3"
             >
         @endif
 
@@ -32,8 +32,8 @@
     </article>
 
     <p class="mt-4">
-        <a href="{{ route('rides.index') }}">
-            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver a las cabalgatas
+        <a href="{{ route('rides.index') }}" class="link-back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>Volver a las cabalgatas
         </a>
     </p>
 

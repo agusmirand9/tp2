@@ -8,7 +8,6 @@ use Illuminate\Contracts\View\View;
 /**
  * maneja las paginas publicadas de las cabalgatas
  */
-
 class RideController extends Controller
 {
     /**
@@ -29,7 +28,6 @@ class RideController extends Controller
      * @param  Ride  $ride
      * @return View
      */
-
     public function show(Ride $ride): View
     {
         return view('rides.show', [

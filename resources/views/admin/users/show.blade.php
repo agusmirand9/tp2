@@ -50,7 +50,8 @@
     @endif
 
     <p class="mt-4">
-        <a href="{{ route('admin.users.index') }}"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver al listado de usuarios</a>
+        <a href="{{ route('admin.users.index') }}" class="link-back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al listado de usuarios
+        </a>
     </p>
-
 </x-layouts.main>

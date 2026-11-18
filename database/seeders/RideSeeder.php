@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class RideSeeder extends Seeder
 {
@@ -12,6 +14,10 @@ class RideSeeder extends Seeder
      */
     public function run(): void
     {
+        foreach (File::files(database_path('seeders/images/rides')) as $image) {
+            Storage::disk('public')->put('covers/' . $image->getFilename(), File::get($image->getPathname()));
+        }
+
         //precios x100
         DB::table('rides')->insert([
             [
@@ -21,7 +27,7 @@ class RideSeeder extends Seeder
                 'duration_minutes' => 60,
                 'price' => 2500000,
                 'difficulty' => 'baja',
-                'cover' => 'rides/cabalgata-corta.jpg',
+                'cover' => 'covers/cabalgata-corta.jpg',
                 'cover_description' =>'Grupo de personas recorriendo a caballo un camino de tierra en el campo.',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -33,7 +39,7 @@ class RideSeeder extends Seeder
                 'duration_minutes' => 180,
                 'price' => 4500000,
                 'difficulty' => 'media',
-                'cover' => 'rides/cabalgata-medio-dia.jpg',
+                'cover' => 'covers/cabalgata-medio-dia.jpg',
                 'cover_description' => 'Dos personas en caballo en el lago',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -45,7 +51,7 @@ class RideSeeder extends Seeder
                 'duration_minutes' => 120,
                 'price' => 3500000,
                 'difficulty' => 'media',
-                'cover' => 'rides/cabalgata-atardecer.jpg',
+                'cover' => 'covers/cabalgata-atardecer.jpg',
                 'cover_description' => 'Dos personas a caballo por el campo al atardecer.',
                 'created_at' => now(),
                 'updated_at' => now(),

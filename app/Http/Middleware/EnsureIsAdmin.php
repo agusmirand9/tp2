@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * damos acceso solo al usuario con rol de admin
  */
-
 class EnsureIsAdmin
 {
     /**
@@ -17,7 +16,6 @@ class EnsureIsAdmin
      * si no es un admin responde con error 403
      * @param  Closure(Request): (Response)  $next
      */
-
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user()?->isAdmin()){

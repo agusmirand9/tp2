@@ -99,12 +99,12 @@
             @enderror
         </div>
 
-        @if($post->cover)
-            <figure class="mb-3">
+        @if($post->cover != null && \Storage::exists($post->cover))
+            <figure class="mb-3 cover-preview">
                 <img
-                    src="{{ asset('storage/' . $post->cover) }}"
+                    src="{{ \Storage::url($post->cover) }}"
                     alt="{{ $post->cover_description }}"
-                    class="img-fluid"
+                    class="img-cover"
                 >
                 <figcaption>Imagen actual</figcaption>
             </figure>

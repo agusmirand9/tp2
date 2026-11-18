@@ -39,18 +39,14 @@
                                 @endif
                             </td>
                             <td>
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="{{ route('admin.posts.edit', ['post' => $post]) }}">
-                                            <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>Editar<span class="visually-hidden"> {{ $post->title }}</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.posts.delete', ['post' => $post]) }}">
-                                            <i class="bi bi-trash me-1" aria-hidden="true"></i>Eliminar<span class="visually-hidden"> {{ $post->title }}</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="d-flex align-items-center gap-2">
+                                    <a href="{{ route('admin.posts.edit', ['post' => $post]) }}" class="btn btn-sm btn-outline-secondary btn-action">
+                                        <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>Editar<span class="visually-hidden"> {{ $post->title }}</span>
+                                    </a>
+                                    <a href="{{ route('admin.posts.delete', ['post' => $post]) }}" class="btn btn-sm btn-outline-danger btn-action btn-action--danger">
+                                        <i class="bi bi-trash me-1" aria-hidden="true"></i>Eliminar<span class="visually-hidden"> {{ $post->title }}</span>
+                                    </a>
+                                </div>    
                             </td>
                         </tr>
                     @endforeach
@@ -62,8 +58,8 @@
     @endif
 
     <p class="mt-4">
-        <a href="{{ route('admin.dashboard') }}">
-            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver al panel
+        <a href="{{ route('admin.dashboard') }}" class="link-back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al panel
         </a>
     </p>
 </x-layouts.main>

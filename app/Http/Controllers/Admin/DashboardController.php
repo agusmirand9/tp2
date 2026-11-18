@@ -8,11 +8,10 @@ use Illuminate\Contracts\View\View;
 /**
  * maneja el panel de inicio del admin
  */
-
 class DashboardController extends Controller
 {
     /**
-     * muestra el panel con los acceso a las secciones del admin
+     * muestra el panel con los accesos a las secciones del admin
      * @return View
      */
     public function index(): View

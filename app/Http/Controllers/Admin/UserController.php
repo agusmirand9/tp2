@@ -15,7 +15,6 @@ class UserController extends Controller
      * muestra el listado paginado de los usuarios
      * @return View
      */
-
     public function index(): View
     {
         $users = User::with('role')

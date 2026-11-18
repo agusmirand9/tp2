@@ -26,7 +26,7 @@
                             <td>{{ $user->role->label }}</td>
                             <td>{{ $user->bookings_count }}</td>
                             <td>
-                                <a href="{{ route('admin.users.show', ['user' => $user]) }}">
+                               <a href="{{ route('admin.users.show', ['user' => $user]) }}" class="btn btn-sm btn-outline-secondary btn-action">
                                     <i class="bi bi-eye me-1" aria-hidden="true"></i>Ver detalle<span class="visually-hidden"> de {{ $user->name }}</span>
                                 </a>
                             </td>
@@ -40,8 +40,8 @@
     @endif
 
     <p class="mt-4">
-        <a href="{{ route('admin.dashboard') }}">
-            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver al panel
+        <a href="{{ route('admin.dashboard') }}" class="link-back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al panel
         </a>
     </p>
 </x-layouts.main>

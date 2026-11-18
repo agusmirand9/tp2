@@ -22,9 +22,9 @@
                 @foreach($rides as $ride)
                     <li>
                         <article class="card-item">
-                            @if($ride->cover)
+                            @if($ride->cover != null && \Storage::exists($ride->cover))
                                 <img
-                                    src="{{ asset('storage/' . $ride->cover) }}"
+                                    src="{{ \Storage::url($ride->cover) }}"
                                     alt="{{ $ride->cover_description }}"
                                 >
                             @endif
@@ -43,8 +43,8 @@
             </ul>
 
             <p>
-                <a href="{{ route('rides.index') }}">
-                    Ver todas las cabalgatas<i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                <a href="{{ route('rides.index') }}" class="link-more">
+                    Ver todas las cabalgatas<i class="bi bi-arrow-right" aria-hidden="true"></i>
                 </a>
             </p>
         @endif
@@ -95,8 +95,8 @@
             </ul>
 
             <p>
-                <a href="{{ route('blog.index') }}">
-                    Ver todas las novedades<i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                <a href="{{ route('blog.index') }}" class="link-more">
+                    Ver todas las novedades<i class="bi bi-arrow-right" aria-hidden="true"></i>
                 </a>
             </p>
         @endif

@@ -5,16 +5,16 @@
         <header class="post-header">
             <h1>{{ $post->title }}</h1>
             <p class="post-meta">
-                <i class="bi bi-person me-1" aria-hidden="true"></i>Por {{ $post->author->name }} el
+                <i class="bi bi-person " aria-hidden="true"></i>Por {{ $post->author->name }} el
                 <time datetime="{{ $post->published_at->toDateString() }}">{{ $post->published_at->format('d/m/Y') }}</time>
             </p>
             <p class="lead">{{ $post->excerpt }}</p>
         </header>
 
-        @if($post->cover)
+        @if($post->cover != null && \Storage::exists($post->cover))
             <figure class="post-cover">
                 <img
-                    src="{{ asset('storage/' . $post->cover) }}"
+                    src="{{  \Storage::url($post->cover) }}"
                     alt="{{ $post->cover_description }}"
                 >
             </figure>
@@ -26,8 +26,8 @@
     </article>
 
     <p class="mt-4">
-        <a href="{{ route('blog.index') }}">
-            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver al blog
+        <a href="{{ route('blog.index') }}" class="link-back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al blog
         </a>
     </p>
 

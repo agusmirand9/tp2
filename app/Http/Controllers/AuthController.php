@@ -10,12 +10,10 @@ use Illuminate\Support\Facades\Auth;
 /**
  * maneja el inicio y cierre de sesion
  */
-
 class AuthController extends Controller
 {
     /**
      * muestra el form de inicio de sesion
-     * @return View
      */
     public function loginForm(): View
     {
@@ -24,8 +22,6 @@ class AuthController extends Controller
 
     /**
      * valida las credenciales e inicia sesion de ese usuario
-     * @param  Request  $request
-     * @return RedirectResponse
      */
     public function loginProcess(Request $request): RedirectResponse
     {
@@ -40,7 +36,7 @@ class AuthController extends Controller
 
         $credentials = $request->only(['email', 'password']);
 
-        if (!Auth::attempt($credentials)){
+        if (! Auth::attempt($credentials)) {
             return redirect()
                 ->route('auth.login.form')
                 ->withErrors(['email' => 'Las credenciales ingresadas no coinciden con nuestros registros.'])
@@ -54,21 +50,18 @@ class AuthController extends Controller
             ->with('feedback.message', 'Sesión iniciada con éxito. ¡Bienvenido!');
     }
 
-        /**
-         * cierra la sesion del usuario
-         * @param Request $request
-         * @return RedirectResponse
-         */
-        public function logout(Request $request): RedirectResponse
-        {
-            Auth::logout();
+    /**
+     * cierra la sesion del usuario
+     */
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
 
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-            return redirect()
-                ->route('auth.login.form')
+        return redirect()
+            ->route('auth.login.form')
             ->with('feedback.message', 'Sesión cerrada con éxito. ¡Te esperamos de vuelta!');
-        }
-
+    }
 }

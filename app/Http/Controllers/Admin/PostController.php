@@ -102,7 +102,7 @@ class PostController extends Controller
     }
 
     /**
-     * muestra la pantalla de confimar eliminar
+     * muestra la pantalla de confirmar eliminar
      * @param  Post  $post
      * @return View
      */
@@ -120,13 +120,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post): RedirectResponse
     {
-        $post->delete();
-        if ($post->cover !== null) {
-            Storage::delete($post->cover);
+        try {
+            $post->delete();
+
+            if ($post->cover !== null && Storage::exists($post->cover)) {
+                Storage::delete($post->cover);
+            }
+
+            return redirect()
+                ->route('admin.posts.index')
+                ->with('feedback.message', 'La novedad "' . $post->title . '" se eliminó con éxito.');
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route('admin.posts.index')
+                ->with('feedback.message', 'Ocurrió un error inesperado y la novedad "' . $post->title . '" no pudo ser eliminada.');
         }
-        return redirect()
-            ->route('admin.posts.index')
-            ->with('feedback.message', 'La novedad "' . $post->title . '" se eliminó con éxito.');
     }
 
     /**

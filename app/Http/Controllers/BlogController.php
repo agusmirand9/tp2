@@ -8,14 +8,12 @@ use Illuminate\Contracts\View\View;
 /**
  * maneja las paginas del blog
  */
-
 class BlogController extends Controller
 {
     /**
      * muestra el listado paginado de posts publicados, del mas nuevo al viejo
      * @return View
      */
-
     public function index(): View
     {
         $posts = Post::published()
@@ -34,7 +32,6 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return View
      */
-
     public function show(string $slug): View
     {
         $post = Post::published()

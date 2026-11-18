@@ -11,9 +11,9 @@
             @foreach($rides as $ride)
                 <li>
                     <article class="card-item">
-                        @if($ride->cover)
+                        @if($ride->cover != null && \Storage::exists($ride->cover))
                             <img
-                                src="{{ asset('storage/' . $ride->cover) }}"
+                                src="{{ \Storage::url($ride->cover) }}"
                                 alt="{{ $ride->cover_description }}"
                                 class="img-fluid mb-2"
                             >
@@ -27,9 +27,9 @@
                             <li><i class="bi bi-speedometer2 me-1" aria-hidden="true"></i>Dificultad: {{ $ride->difficulty }}</li>
                             <li><i class="bi bi-cash-coin me-1" aria-hidden="true"></i>Precio por persona: ${{ number_format($ride->price, 0, ',', '.') }}</li>
                         </ul>
-                        <a href="{{ route('rides.show', ['ride' => $ride]) }}">
-                            Ver detalle<span class="visually-hidden"> de {{ $ride->name }}</span><i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
-                        </a>
+                            <a href="{{ route('rides.show', ['ride' => $ride]) }}" class="link-more">
+                                Ver detalle<span class="visually-hidden"> de {{ $ride->name }}</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
                     </article>
                 </li>
             @endforeach

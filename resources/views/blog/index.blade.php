@@ -11,9 +11,9 @@
             @foreach($posts as $post)
                 <li @class(['post-featured' => $loop->first && $posts->onFirstPage()])>
                     <article class="card-item post-card">
-                        @if($post->cover)
+                        @if($post->cover != null && \Storage::exists($post->cover))
                             <img
-                                src="{{ asset('storage/' . $post->cover) }}"
+                                src="{{ \Storage::url($post->cover) }}"
                                 alt="{{ $post->cover_description }}"
                             >
                         @else
@@ -31,8 +31,8 @@
                                 <time datetime="{{ $post->published_at->toDateString() }}">{{ $post->published_at->format('d/m/Y') }}</time>
                             </p>
                             <p>{{ $post->excerpt }}</p>
-                            <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">
-                                Leer más<span class="visually-hidden"> sobre {{ $post->title }}</span><i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                            <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="link-more">
+                                Leer más<span class="visually-hidden"> sobre {{ $post->title }}</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </article>

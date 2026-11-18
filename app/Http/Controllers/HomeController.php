@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 /**
  * maneja la pagina de inicio
  */
-
 class HomeController extends Controller
 {
     /**
